@@ -1,5 +1,6 @@
 package com.example.backend.service;
 
+import com.example.backend.dto.Response;
 import com.example.backend.entity.Vocabulary;
 import com.example.backend.exception.EntityNotFoundException;
 import com.example.backend.repository.VocabularyRepository;
@@ -12,6 +13,10 @@ public class VocabularyService {
 
     private final VocabularyRepository vocabularyRepository;
 
+    public Response getVocabularyList(){
+        return Response.of(Vo)
+    }
+
     public Vocabulary findVocabularyById(Long id){
 
         Vocabulary vocabulary = vocabularyRepository.findById(id)
@@ -19,4 +24,5 @@ public class VocabularyService {
 
         return vocabulary;
     }
+
 }

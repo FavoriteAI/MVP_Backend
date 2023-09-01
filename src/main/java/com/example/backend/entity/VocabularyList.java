@@ -22,13 +22,13 @@ public class VocabularyList {
     @ManyToOne
     private Vocabulary vocabulary;
 
-    @JoinColumn(name = "picture_id", nullable = false)
+    @JoinColumn(name = "fairytale_id", nullable = false)
     @ManyToOne
-    private Picture picture;
+    private Fairytale fairytale;
 
     @Builder
-    public VocabularyList(Picture picture, Vocabulary vocabulary){
-        this.picture = picture;
+    public VocabularyList(Fairytale fairytale, Vocabulary vocabulary){
+        this.fairytale = fairytale;
         this.vocabulary = vocabulary;
     }
 }

@@ -23,22 +23,13 @@ public class Picture {
     @Column(name = "picture")
     private String picture;
 
-    @OneToMany(mappedBy = "picture", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<VocabularyList> vocabularyLists = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "fairytale_id")
+    private Fairytale fairytale;
 
     @Builder
     public Picture(String picture){
         this.picture = picture;
-    }
-
-    public void addVocabulary(Vocabulary vocabulary){
-        this.vocabularyLists.add(buildVocabularyList(vocabulary));
-    }
-    public VocabularyList buildVocabularyList(Vocabulary vocabulary){
-        return VocabularyList.builder()
-                .vocabulary(vocabulary)
-                .picture(this)
-                .build();
     }
 
 }

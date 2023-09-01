@@ -5,10 +5,7 @@ import com.example.backend.dto.VocabularyListRequest;
 import com.example.backend.service.VocabularyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/vocabularies")
@@ -17,7 +14,7 @@ public class VocabularyController {
 
     private final VocabularyService vocabularyService;
 
-    @GetMapping
+    @PostMapping
     public ResponseEntity<Response> getVocabulariesByLevel(@RequestBody VocabularyListRequest vocabularyListRequest){
         int page = vocabularyListRequest.getPage();
         int level = vocabularyListRequest.getLevel();

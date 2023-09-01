@@ -24,12 +24,6 @@ public class PictureService {
         return picture;
     }
 
-    public void addVocabularyList(Picture picture, List<Vocabulary> vocabularies) {
-        for (Vocabulary vocabulary : vocabularies) {
-            picture.addVocabulary(vocabulary);
-        }
-    }
-
     public Picture createPicture(Picture picture){
         return pictureRepository.save(picture);
     }

@@ -20,7 +20,7 @@ public class Picture {
     @GeneratedValue
     private Long pictureId;
 
-    @Column(name = "picture")
+    @Column(name = "picture", length = 500)
     private String picture;
 
     @ManyToOne

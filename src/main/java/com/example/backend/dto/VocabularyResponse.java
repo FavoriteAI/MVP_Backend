@@ -15,7 +15,7 @@ public class VocabularyResponse {
     private String category;
     private String partOfSpeech;
     private int level;
-    @Builder
+
     public VocabularyResponse(Vocabulary vocabulary){
         this.vocabularyId = vocabulary.getVocabularyId();
         this.english = vocabulary.getVocabulary();
@@ -23,6 +23,10 @@ public class VocabularyResponse {
         this.category = vocabulary.getCategory();
         this.partOfSpeech = vocabulary.getPartOfSpeech();
         this.level = vocabulary.getLevel();
+    }
+
+    public static VocabularyResponse of(Vocabulary vocabulary){
+        return new VocabularyResponse(vocabulary);
     }
 
 }

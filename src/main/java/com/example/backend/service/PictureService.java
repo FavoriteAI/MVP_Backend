@@ -14,18 +14,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PictureService {
 
-    private final PictureRepository pictureRepository;
+    private final OpenAiService openAiService;
 
-    public Picture selectPicture(String pictureUrl){
-        Picture picture = Picture.builder()
-                .picture(pictureUrl)
-                .build();
-
-        return picture;
+    public Picture createPictureByAi(String prompt){
+       String pictureUrl = openAiService.generateImageFromPrompt(prompt);
+       Picture picture = createPictureEntity(pictureUrl);
+       return picture;
     }
 
-    public Picture createPicture(Picture picture){
-        return pictureRepository.save(picture);
+    public Picture createPictureEntity(String pictureUrl){
+        return Picture.builder()
+                .picture(pictureUrl)
+                .build();
     }
 
 }

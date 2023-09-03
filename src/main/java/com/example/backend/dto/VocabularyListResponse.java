@@ -10,14 +10,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class VocabularyListResponse {
     private List<VocabularyResponse> vocabularyResponseList;
 
-    @Builder
     public VocabularyListResponse(List<Vocabulary> vocabularies){
         this.vocabularyResponseList = vocabularies.stream()
                 .map(VocabularyResponse::new)
                 .collect(Collectors.toList());
+    }
+
+    public static VocabularyListResponse of(List<Vocabulary> vocabularies){
+        return new VocabularyListResponse(vocabularies);
     }
 
 }

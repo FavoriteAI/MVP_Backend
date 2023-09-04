@@ -11,6 +11,7 @@ import com.example.backend.repository.VocabularyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -43,8 +44,11 @@ public class VocabularyService {
         return vocabulary;
     }
 
-//    public Response getVocabularyListByPartOfSpeech(String partOfSpeech){
-//        Page<Vocabulary> vocabularies = vocabularyRepository.findByPartOfSpeech(partOfSpeech, )
-//    }
+    public Response getVocabularyListByPartOfSpeech(String partOfSpeech, int page, int size){
+        Page<Vocabulary> vocabularyPage = vocabularyRepository.findByPartOfSpeech(partOfSpeech, PageRequest.of(page,size,Sort.unsorted()));
+        List<Vocabulary> vocabularies = vocabularyPage.getContent();
+        VocabularyListResponse vocabularyListResponse = VocabularyListResponse.of(vocabularies);
+        return Response.of(VocabularyCode.VOCABULARY_LIST_GENERATED, vocabularyListResponse);
+    }
 
 }

@@ -15,6 +15,7 @@ public class VocabularyController {
     private final VocabularyService vocabularyService;
 
     @PostMapping
+    @CrossOrigin(origins = "https://www.airytale.site", allowCredentials = "true")
     public ResponseEntity<Response> getVocabulariesByLevel(@RequestBody VocabularyListRequest vocabularyListRequest){
         int page = vocabularyListRequest.getPage();
         int level = vocabularyListRequest.getLevel();
